@@ -113,7 +113,7 @@ class OffsetScale(nn.Module):
         nn.init.normal_(self.gamma, std = 0.02)
 
     def forward(self, x):
-        out = einsum('... d, h d -> ... h d', x, self.gamma) + self.beta
+        out = einsum('... d, h d -> ... h d', x, self.gamma) + self.beta #B, seq(n), h, d
         return out.unbind(dim = -2)
 
 # activation functions
